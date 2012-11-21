@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @page.title %>
+</p>
+
+<p>
+  <b>Test strategy:</b>
+  <%= @page.test_strategy %>
+</p>
+
+<p>
+  <b>Setup steps:</b>
+  <%= @page.setup_steps %>
+</p>
+
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
