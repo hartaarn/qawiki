@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118181523) do
+ActiveRecord::Schema.define(:version => 20121123224925) do
 
   create_table "pages", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,22 @@ ActiveRecord::Schema.define(:version => 20121118181523) do
     t.text     "setup_steps"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "revisions", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "page_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

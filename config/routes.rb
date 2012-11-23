@@ -1,4 +1,8 @@
 Qawiki::Application.routes.draw do
+  resources :revisions
+
+  resources :users
+
   resources :pages
 
   
