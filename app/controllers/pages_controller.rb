@@ -13,7 +13,9 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
-    @page = Page.find(params[:id])
+    #@page = Page.find(params[:id])
+    @page = Page.find_or_create_by_title(params[:title])
+    return redirect_to edit_page_path(:title => @page.title) if @page.revisions.empty?
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,6 +37,7 @@ class PagesController < ApplicationController
   # GET /pages/1/edit
   def edit
     @page = Page.find(params[:id])
+    @revision = @page.revisions.last || Revision.new
   end
 
   # POST /pages

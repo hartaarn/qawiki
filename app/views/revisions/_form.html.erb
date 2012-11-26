@@ -11,6 +11,14 @@
     </div>
   <% end %>
 
+  <%= f.text_area :content %>
+  <%= f.hidden_field :page_id, :value => @page_id %>
+  
+  <% fields_for :user do |u| %>
+    Your Name
+    <%= u.text_field :name %>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

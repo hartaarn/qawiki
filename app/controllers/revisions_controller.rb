@@ -34,7 +34,8 @@ class RevisionsController < ApplicationController
 
   # GET /revisions/1/edit
   def edit
-    @revision = Revision.find(params[:id])
+    #@revision = Revision.find(params[:id])
+    @page = Page.find_by_title(params[:title])
   end
 
   # POST /revisions
@@ -44,10 +45,12 @@ class RevisionsController < ApplicationController
 
     respond_to do |format|
       if @revision.save
-        format.html { redirect_to @revision, notice: 'Revision was successfully created.' }
+        #format.html { redirect_to @revision, notice: 'Revision was successfully created.' }
+        format.html { redirect_to page_base_url(:page_title => @revision.page.title) }
         format.json { render json: @revision, status: :created, location: @revision }
       else
-        format.html { render action: "new" }
+        #format.html { render action: "new" }
+        format.html { redirect_to page_base_url(:page_title => @revision.page.title) }
         format.json { render json: @revision.errors, status: :unprocessable_entity }
       end
     end
